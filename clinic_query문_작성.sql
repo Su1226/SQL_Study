@@ -27,17 +27,29 @@ order by
 insert into patient_tb(patient_name, patient_gender, patient_birth)
 select
 	patient_name,
-    gender,
-    birth_date
+	gender,
+	birth_date
 from 
 	clinic_tb
 group by
 	patient_name,
-    gender,
-    birth_date
+	gender,
+	birth_date
 order by
 	patient_name;
     
 # doctor_tb에 값 넣기
-
+insert into doctor_tb(doctor_name, department_id)
+select
+	doctor_name,
+	department_id
+from 
+	clinic_tb ct
+	inner join department_tb dt on(dt.department_name = ct.department)
+group by
+	doctor_name,
+	department_name
+order by
+	doctor_name,
+	department_name;
     
